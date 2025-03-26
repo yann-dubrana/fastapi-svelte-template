@@ -19,7 +19,7 @@ class HelloWorld(BaseModel):
     message: str
 
 
-@app.get("/", response_model=HelloWorld)
+@app.get("/hello-world", response_model=HelloWorld)
 async def hello_world():
     return {"message": "Hello, World!"}
 
@@ -27,7 +27,7 @@ async def hello_world():
 app.mount("/assets", StaticFiles(directory="static/assets"), name="static")
 
 
-@app.get("/backoffice", response_class=HTMLResponse)
-async def read_backoffice():
+@app.get("/", response_class=HTMLResponse, include_in_schema=False)
+async def app():
     with open("static/index.html") as f:
         return f.read()

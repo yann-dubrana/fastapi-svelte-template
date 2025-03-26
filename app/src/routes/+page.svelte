@@ -8,7 +8,7 @@
 
     let hello: HelloWorld | undefined = $state(undefined);
     onMount(async () => {
-        const response = await fetch('http://localhost:8000/')
+        const response = await fetch('/hello-world')
         hello = await response.json() as HelloWorld;
     });
 
